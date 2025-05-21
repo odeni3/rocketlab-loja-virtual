@@ -63,5 +63,3 @@ Rocketlab é uma aplicação de e-commerce desenvolvida em React + TypeScript, c
 - O estado do carrinho é mantido apenas em memória (ao recarregar a página, o carrinho é limpo).
 
 ---
-
-Desenvolvido por [Rocketlab](https://github.com/odeni3) 🚀
