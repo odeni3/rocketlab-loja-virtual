@@ -41,7 +41,9 @@ const Orders: React.FC = () => {
               <div className="divide-y">
                 {order.items.map(({ product, quantity }) => (
                   <div key={product.id} className="flex items-center gap-4 py-2">
-                    <img src={product.image} alt={product.name} className="w-12 h-12 object-cover rounded" />
+                    <div className="w-12 h-12 flex items-center justify-center bg-white">
+                      <img src={product.image} alt={product.name} className="w-full h-full object-contain object-center rounded" />
+                    </div>
                     <div className="flex-1">
                       <div className="font-medium">{product.name}</div>
                       <div className="text-xs text-gray-500">x{quantity}</div>

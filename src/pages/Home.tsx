@@ -11,22 +11,28 @@ const Home = () => {
     return (
       <>
         <Header />
-        <main className="max-w-6xl mx-auto px-4 py-8">
+        <main className="max-w-6xl mx-auto px-6 py-8">
           <h2 className="text-2xl font-bold mb-6">Produtos em destaque</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {products.map(product => (
               <div
                 key={product.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition-shadow"
+                className="bg-white border border-gray-300 rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer 
+            hover:shadow-xl hover:-translate-y-1 transform transition-transform transition-shadow duration-300"
                 onClick={e => {
                   if ((e.target as HTMLElement).closest('button')) return;
                   navigate(`/produto/${product.id}`);
                 }}
               >
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                <div className="w-full h-48 flex items-center justify-center bg-white">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain object-center"
+                  />
+                </div>
                 <div className="p-4 flex-1 flex flex-col">
                   <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-500 text-sm mb-4 flex-1">{product.description}</p>
                   <div className="mb-4">
                     <span className="text-xl font-bold text-blue-700 mr-2">R$ {product.price.toFixed(2)}</span>
                     {product.oldPrice && (

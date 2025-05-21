@@ -42,7 +42,9 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
           ) : (
             items.map(({ product, quantity }) => (
               <div key={product.id} className="flex gap-4 mb-6 border-b pb-4">
-                <img src={product.image} alt={product.name} className="w-20 h-20 object-cover rounded" />
+                <div className="w-20 h-20 flex items-center justify-center bg-white">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain object-center rounded" />
+                </div>
                 <div className="flex-1 flex flex-col justify-between">
                   <div>
                     <div className="font-semibold text-base truncate">{product.name}</div>

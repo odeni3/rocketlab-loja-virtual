@@ -31,11 +31,13 @@ const ProductDetail = () => {
         <span className="mr-2">&larr;</span> Voltar para produtos
       </button>
       <div className="flex flex-col md:flex-row gap-8 bg-white rounded-xl shadow-md p-6">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full md:w-1/2 h-80 object-cover rounded-lg"
-        />
+        <div className="w-full md:w-1/2 h-80 flex items-center justify-center bg-white">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-contain object-center rounded-lg"
+          />
+        </div>
         <div className="flex-1 flex flex-col justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
