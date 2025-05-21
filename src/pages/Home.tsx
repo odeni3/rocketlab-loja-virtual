@@ -3,6 +3,7 @@ import { products } from '../mocks/productsmock';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useState } from 'react';
+import Footer from '../components/Footer';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -58,6 +59,7 @@ const Home = () => {
             ))}
           </div>
         </main>
+        <Footer />
       </>
     );
 };
