@@ -1,23 +1,26 @@
 # Rocketlab Loja Virtual
 
-Rocketlab é uma aplicação de e-commerce desenvolvida em React + TypeScript, com foco em experiência de compra moderna e responsiva. O projeto simula uma loja virtual, permitindo ao usuário navegar por produtos, visualizar detalhes, adicionar itens ao carrinho e simular uma compra.
+Rocketlab é uma aplicação de e-commerce desenvolvida em React + TypeScript, com foco em experiência de compra moderna, responsiva e visualmente agradável. O projeto simula uma loja virtual, permitindo ao usuário navegar por produtos, visualizar detalhes, adicionar itens ao carrinho, simular uma compra e acompanhar o histórico de pedidos.
 
 ## Funcionalidades
 
-- Listagem de produtos em cards com imagem, nome, preço, desconto e botão de adicionar ao carrinho
-- Página de detalhes do produto com descrição, preço antigo, desconto, seleção de quantidade e botão de adicionar ao carrinho
-- Carrinho global com sidebar: visualize, altere quantidades, remova itens e veja o subtotal/total
-- Badge de quantidade de itens no ícone do carrinho
-- Navegação entre páginas usando React Router
-- Layout responsivo e estilização moderna com TailwindCSS
+- **Listagem de produtos em cards:** Imagem, nome, preço, desconto e botão de adicionar ao carrinho.
+- **Página de detalhes do produto:** Imagem, descrição, preço antigo, desconto, seleção de quantidade e botão de adicionar ao carrinho.
+- **Carrinho global com sidebar:** Visualize, altere quantidades, remova itens e veja o subtotal/total. Imagens dos produtos redimensionadas e centralizadas.
+- **Badge de quantidade de itens no ícone do carrinho.**
+- **Histórico de pedidos:** Página dedicada mostrando todos os pedidos realizados, com imagens dos produtos.
+- **Navegação entre páginas usando React Router.**
+- **Layout responsivo e estilização moderna com TailwindCSS.**
+- **Feedback visual aprimorado:** Cards com hover destacado e animação, botões com estados visuais claros.
+- **Persistência de pedidos:** Os pedidos são salvos no localStorage e exibidos no histórico.
 
 ## Tecnologias Utilizadas
 
-- [React](https://react.dev/) (com Hooks)
+- [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [React Router DOM](https://reactrouter.com/)
 - [TailwindCSS](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/) (para build e dev server)
+- [Vite](https://vitejs.dev/)
 
 ## Como rodar o projeto
 
@@ -32,16 +35,12 @@ Rocketlab é uma aplicação de e-commerce desenvolvida em React + TypeScript, c
 
    ```bash
    npm install
-   # ou
-   yarn
    ```
 
 3. **Rode o projeto em modo desenvolvimento:**
 
    ```bash
    npm run dev
-   # ou
-   yarn dev
    ```
 
 4. **Acesse no navegador:**
@@ -50,16 +49,12 @@ Rocketlab é uma aplicação de e-commerce desenvolvida em React + TypeScript, c
 
 ## Estrutura principal
 
-- `src/pages/Home.tsx`: Página inicial com listagem de produtos
-- `src/pages/ProductDetail.tsx`: Página de detalhes do produto
-- `src/components/Header.tsx`: Header fixo com nome da loja e ícone do carrinho
-- `src/components/SidebarCart.tsx`: Sidebar do carrinho
-- `src/contexts/CartContext.tsx`: Contexto global do carrinho
-- `src/mocks/productsmock.ts`: Mock de produtos
-
-## Observações
-
-- O projeto é apenas um protótipo, não possui backend e não realiza compras reais.
-- O estado do carrinho é mantido apenas em memória (ao recarregar a página, o carrinho é limpo).
+- `src/pages/Home.tsx`: Página inicial com listagem de produtos em cards. Cada card mostra imagem, nome, preço, desconto e botão de adicionar ao carrinho.
+- `src/pages/ProductDetail.tsx`: Página de detalhes do produto. Exibe imagem, descrição, preço antigo, desconto, quantidade e botão de adicionar ao carrinho.
+- `src/components/Header.tsx`: Header fixo com nome da loja, ícone do carrinho (com badge de quantidade) e link para histórico de pedidos.
+- `src/components/SidebarCart.tsx`: Sidebar do carrinho. Exibe itens adicionados, permite alterar quantidades, remover, mostra o total e botão de finalizar compra.
+- `src/pages/Orders.tsx`: Página de histórico de pedidos. Mostra todos os pedidos realizados, com data, produtos, quantidades e total de cada pedido.
+- `src/contexts/CartContext.tsx`: Contexto global do carrinho, responsável por adicionar, remover, atualizar quantidade e limpar o carrinho.
+- `src/mocks/productsmock.ts`: Mock de produtos.
 
 ---
