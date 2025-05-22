@@ -41,7 +41,7 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
     <div className="fixed inset-0 bg-black/40 dark:bg-black/70 flex items-center justify-center z-50">
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl dark:shadow-black w-full max-w-md p-6 relative flex flex-col">
         <button className="absolute top-2 right-2 text-gray-500 dark:text-gray-300" onClick={onClose}>✕</button>
-        <h4 className="text-lg font-bold mb-2 text-blue-700 dark:text-blue-300">Pergunte sobre: <span className="text-blue-700 dark:text-blue-200">{product.name}</span></h4>
+        <h4 className="text-lg font-bold mb-2 text-blue-700 dark:text-blue-300">🤖Pergunte ao Assistente Rocketlab sobre: <span className="text-blue-700 dark:text-blue-200">{product.name}</span></h4>
         <div className="flex-1 overflow-y-auto mb-4 max-h-60 border rounded p-2 bg-gray-50 dark:bg-gray-800">
           {messages.slice(1).map((msg, i) => (
             <div key={i} className={`mb-2 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
