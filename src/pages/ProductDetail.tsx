@@ -25,7 +25,7 @@ const ProductDetail = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <button
-        className="text-blue-700 hover:underline flex items-center mb-6"
+        className="inline-block mb-6 px-4 py-2 rounded-lg bg-blue-700 dark:bg-blue-800 text-white font-semibold shadow hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors flex items-center"
         onClick={() => navigate(-1)}
       >
         <span className="mr-2">&larr;</span> Voltar para produtos

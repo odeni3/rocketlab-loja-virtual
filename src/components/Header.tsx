@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SidebarCart from './SidebarCart';
 import { useCart } from '../contexts/CartContext';
 import { Link } from 'react-router-dom';
@@ -6,20 +6,37 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const { totalItems } = useCart();
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark';
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
 
   return (
     <>
-      <header className="backdrop-blur-md bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-blue-600/80 shadow-2xl border-b border-blue-900/30 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
+      <header className="backdrop-blur-md bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-blue-600/80 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 shadow-2xl border-b border-blue-900/30 dark:border-gray-800 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 shadow-lg">
             🚀
           </span>
-          <h1 className="text-2xl font-extrabold tracking-wider text-white drop-shadow-lg select-none">Rocketlab Loja Virtual</h1>
+          <h1 className="text-2xl font-extrabold tracking-wider text-white dark:text-gray-100 drop-shadow-lg select-none">Rocketlab Loja Virtual</h1>
         </div>
         <div className="flex items-center gap-6">
           <Link
             to="/pedidos"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold shadow transition-all duration-200"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 text-white dark:text-gray-100 font-semibold shadow transition-all duration-200"
           >
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" />
@@ -27,7 +44,32 @@ const Header: React.FC = () => {
             Meus Pedidos
           </Link>
           <button
-            className="relative bg-white/10 hover:bg-blue-700 border-none cursor-pointer p-3 rounded-full flex items-center transition-all duration-200 shadow-lg"
+            className={`relative w-14 h-8 flex items-center rounded-full transition-colors duration-300 focus:outline-none
+              ${darkMode ? 'bg-gray-800' : 'bg-gray-300'}`}
+            onClick={() => setDarkMode((prev) => !prev)}
+            aria-label="Alternar dark mode"
+            type="button"
+          >
+            <span
+              className={`absolute left-1 top-1 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center transition-all duration-300
+                ${darkMode ? 'translate-x-6' : 'translate-x-0'}`}
+            >
+              {darkMode ? (
+                // Ícone de lua
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-gray-800">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                </svg>
+              ) : (
+                // Ícone de sol
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-yellow-500">
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+              )}
+            </span>
+          </button>
+          <button
+            className="relative bg-white/10 hover:bg-blue-700 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 border-none cursor-pointer p-3 rounded-full flex items-center transition-all duration-200 shadow-lg"
             aria-label="Carrinho"
             onClick={() => setCartOpen(true)}
           >
