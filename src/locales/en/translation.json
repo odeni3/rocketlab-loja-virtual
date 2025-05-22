@@ -1,0 +1,113 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "close": "Close"
+  },
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "orders": "Orders",
+    "account": "My Account",
+    "login": "Login",
+    "logout": "Logout",
+    "storeName": "Rocketlab Virtual Store",
+    "toggleDarkMode": "Toggle dark mode"
+  },
+  "home": {
+    "welcome": "Welcome to our store",
+    "featuredProducts": "Featured Products",
+    "viewAll": "View All",
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers"
+  },
+  "product": {
+    "addToCart": "Add to Cart",
+    "price": "Price",
+    "quantity": "Quantity",
+    "description": "Description",
+    "specifications": "Specifications",
+    "relatedProducts": "Related Products",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "notFound": "Product not found.",
+    "backToProducts": "Back to products",
+    "addAgain": "Add to cart again",
+    "askAI": "Ask AI about this product",
+    "unitsInCart": "{{count, plural, one{unit} other{units}}} in cart"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "items": "items",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping",
+    "remove": "Remove",
+    "update": "Update",
+    "whyBuy": "WHY BUY THESE PRODUCTS?",
+    "whyBuyTitle": "Why should I buy these products?",
+    "emptyCartMessage": "Add items to cart to use this feature",
+    "whyBuyMessage": "Get a reason to buy!"
+  },
+  "orders": {
+    "backToHome": "Back to home page",
+    "title": "Order History",
+    "noOrders": "No orders yet.",
+    "orderNumber": "Order",
+    "date": "Date",
+    "status": "Status",
+    "viewDetails": "View Details",
+    "total": "Total"
+  },
+  "checkout": {
+    "title": "Purchase Confirmation",
+    "shippingAddress": "Shipping Address",
+    "paymentMethod": "Payment Method",
+    "orderSummary": "Order Summary",
+    "placeOrder": "Confirm purchase",
+    "requiredFields": "Required fields",
+    "success": "Purchase completed!",
+    "orderSaved": "Your order has been saved to history."
+  },
+  "account": {
+    "title": "My Account",
+    "personalInfo": "Personal Information",
+    "addresses": "Addresses",
+    "changePassword": "Change Password",
+    "orderHistory": "Order History"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot Password?",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "name": "Name",
+    "alreadyHaveAccount": "Already have an account?"
+  },
+  "chat": {
+    "title": "Ask Rocketlab Assistant about",
+    "systemPrompt": "You are a sales assistant. Answer questions about the following product",
+    "error": "Error connecting to AI.",
+    "thinking": "Thinking...",
+    "placeholder": "Type your question...",
+    "send": "Send"
+  },
+  "footer": {
+    "storeName": "Rocketlab Virtual Store",
+    "aboutUs": "About us",
+    "description": "Rocketlab is a fictional virtual store created to demonstrate technology, design and modern shopping experience. Our goal is to inspire and show the potential of e-commerce with a beautiful, intuitive and responsive interface.",
+    "copyright": "Rocketlab. All rights reserved."
+  }
+}

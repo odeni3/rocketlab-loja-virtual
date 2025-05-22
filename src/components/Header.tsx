@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import SidebarCart from './SidebarCart';
 import { useCart } from '../contexts/CartContext';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Header: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const [cartOpen, setCartOpen] = useState(false);
   const { totalItems } = useCart();
   const [darkMode, setDarkMode] = useState(() => {
@@ -12,6 +14,14 @@ const Header: React.FC = () => {
     }
     return false;
   });
+
+  const currentLanguage = i18n.language;
+
+  const toggleLanguage = () => {
+    const newLanguage = currentLanguage === 'pt' ? 'en' : 'pt';
+    i18n.changeLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
+  };
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -31,7 +41,7 @@ const Header: React.FC = () => {
           <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 shadow-lg">
             🚀
           </span>
-          <h1 className="text-2xl font-extrabold tracking-wider text-white dark:text-gray-100 drop-shadow-lg select-none">Rocketlab Loja Virtual</h1>
+          <h1 className="text-2xl font-extrabold tracking-wider text-white dark:text-gray-100 drop-shadow-lg select-none">{t('header.storeName')}</h1>
         </div>
         <div className="flex items-center gap-6">
           <Link
@@ -41,13 +51,30 @@ const Header: React.FC = () => {
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" />
             </svg>
-            Meus Pedidos
+            {t('header.orders')}
           </Link>
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 text-white dark:text-gray-100 font-semibold shadow transition-all duration-200"
+            title={currentLanguage === 'pt' ? 'Switch to English' : 'Mudar para Português'}
+          >
+            {currentLanguage === 'pt' ? (
+              <>
+                <span className="text-lg">🇧🇷</span>
+                <span className="text-sm">PT</span>
+              </>
+            ) : (
+              <>
+                <span className="text-lg">🇺🇸</span>
+                <span className="text-sm">EN</span>
+              </>
+            )}
+          </button>
           <button
             className={`relative w-14 h-8 flex items-center rounded-full transition-colors duration-300 focus:outline-none
               ${darkMode ? 'bg-gray-800' : 'bg-gray-300'}`}
             onClick={() => setDarkMode((prev) => !prev)}
-            aria-label="Alternar dark mode"
+            aria-label={t('header.toggleDarkMode')}
             type="button"
           >
             <span
@@ -70,7 +97,7 @@ const Header: React.FC = () => {
           </button>
           <button
             className="relative bg-white/10 hover:bg-blue-700 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 border-none cursor-pointer p-3 rounded-full flex items-center transition-all duration-200 shadow-lg"
-            aria-label="Carrinho"
+            aria-label={t('header.cart')}
             onClick={() => setCartOpen(true)}
           >
             <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white">

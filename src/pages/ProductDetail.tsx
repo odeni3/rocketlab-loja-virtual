@@ -1,25 +1,26 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { products } from '../mocks/productsmock';
 import { useState } from 'react';
 import { useCart } from '../contexts/CartContext';
+import { useTranslation } from 'react-i18next';
+import { useTranslatedProducts } from '../hooks/useTranslatedProducts';
 
 const ProductDetail = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const products = useTranslatedProducts();
   const product = products.find((p) => p.id === id);
   const [quantity, setQuantity] = useState(1);
   const [inCart, setInCart] = useState(0);
   const { addToCart } = useCart();
 
   if (!product) {
-    return <div className="p-8">Produto não encontrado.</div>;
+    return <div className="p-8">{t('product.notFound')}</div>;
   }
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
     setInCart((prev) => prev + quantity);
-    console.log(quantity);
-    console.log(product);
   };
 
   return (
@@ -28,7 +29,7 @@ const ProductDetail = () => {
         className="inline-block mb-6 px-4 py-2 rounded-lg bg-blue-700 dark:bg-blue-800 text-white font-semibold shadow hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors flex items-center"
         onClick={() => navigate(-1)}
       >
-        <span className="mr-2">&larr;</span> Voltar para produtos
+        <span className="mr-2">&larr;</span> {t('product.backToProducts')}
       </button>
       <div className="flex flex-col md:flex-row gap-8 bg-white rounded-xl shadow-md p-6">
         <div className="w-full md:w-1/2 h-80 flex items-center justify-center bg-white">
@@ -50,10 +51,10 @@ const ProductDetail = () => {
                 <span className="bg-red-100 text-red-700 text-sm font-semibold px-2 py-1 rounded">{product.discount}% OFF</span>
               )}
             </div>
-            <h2 className="font-semibold mb-1">Descrição</h2>
+            <h2 className="font-semibold mb-1">{t('product.description')}</h2>
             <p className="text-gray-700 mb-6">{product.description}</p>
             <div className="flex items-center gap-2 mb-4">
-              <span>Quantidade:</span>
+              <span>{t('product.quantity')}:</span>
               <button
                 className="border rounded px-2 py-1 text-lg"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -68,10 +69,12 @@ const ProductDetail = () => {
               className="bg-blue-900 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded transition-colors mb-2"
               onClick={handleAddToCart}
             >
-              Adicionar ao carrinho
+              {t('product.addToCart')}
             </button>
             {inCart > 0 && (
-              <div className="text-green-600 text-sm font-medium mt-2">{inCart} unidade{inCart > 1 ? 's' : ''} no carrinho</div>
+              <div className="text-green-600 text-sm font-medium mt-2">
+                {inCart} {t('product.unitsInCart', { count: inCart })}
+              </div>
             )}
           </div>
         </div>

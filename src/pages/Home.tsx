@@ -1,21 +1,26 @@
 import Header from '../components/Header';
-import { products } from '../mocks/productsmock';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useState } from 'react';
 import Footer from '../components/Footer';
 import ProductChat from '../components/ProductChat';
 import type { Product } from '../types/Product';
+import { useTranslation } from 'react-i18next';
+import { useTranslatedProducts } from '../hooks/useTranslatedProducts';
+
 const Home = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const { addToCart } = useCart();
     const [added, setAdded] = useState<{ [id: string]: boolean }>({});
-    const [chatProduct, setChatProduct] = useState< Product | null>(null);
+    const [chatProduct, setChatProduct] = useState<Product | null>(null);
+    const products = useTranslatedProducts();
+
     return (
       <>
         <Header />
         <main className="max-w-6xl mx-auto px-6 py-8 bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Produtos em destaque</h2>
+          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">{t('home.featuredProducts')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {products.map(product => (
               <div
@@ -33,7 +38,7 @@ const Home = () => {
                     e.stopPropagation();
                     setChatProduct(product);
                   }}
-                  title="Pergunte à IA sobre este produto"
+                  title={t('product.askAI')}
                 >
                   💬
                 </button>
@@ -64,7 +69,7 @@ const Home = () => {
                       setAdded((prev) => ({ ...prev, [product.id]: true }));
                     }}
                   >
-                    {added[product.id] ? 'Adicionar novamente ao carrinho' : 'Adicionar ao carrinho'}
+                    {added[product.id] ? t('product.addAgain') : t('product.addToCart')}
                   </button>
                 </div>
               </div>

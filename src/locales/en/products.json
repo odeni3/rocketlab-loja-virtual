@@ -1,0 +1,52 @@
+{
+  "products": {
+    "1": {
+      "name": "Bluetooth Headphones",
+      "description": "Wireless headphones with noise cancellation and long-lasting battery."
+    },
+    "2": {
+      "name": "Fitness Smartwatch",
+      "description": "Track your workouts, heart rate, and phone notifications."
+    },
+    "3": {
+      "name": "Instant Camera",
+      "description": "Capture special moments and reveal photos instantly."
+    },
+    "4": {
+      "name": "RGB Mechanical Keyboard",
+      "description": "Mechanical keyboard with customizable RGB lighting and high-performance switches."
+    },
+    "5": {
+      "name": "Gaming Mouse",
+      "description": "Ergonomic mouse with high precision and programmable buttons."
+    },
+    "6": {
+      "name": "Ultra-thin Laptop",
+      "description": "Light, fast laptop with long-lasting battery for productivity anywhere."
+    },
+    "7": {
+      "name": "Gaming Chair",
+      "description": "Comfort and ergonomics for long gaming or work sessions."
+    },
+    "8": {
+      "name": "4K 27\" Monitor",
+      "description": "High-resolution monitor for maximum image quality."
+    },
+    "9": {
+      "name": "Multifunction Printer",
+      "description": "Print, copy and scan with ease and quality."
+    },
+    "10": {
+      "name": "50\" Smart TV",
+      "description": "Smart TV with 4K resolution, app access and voice control."
+    },
+    "11": {
+      "name": "Echo Dot (Alexa)",
+      "description": "Smart virtual assistant for your connected home."
+    },
+    "12": {
+      "name": "10\" Android Tablet",
+      "description": "Fast tablet, perfect for studies, reading and entertainment."
+    }
+  }
+}

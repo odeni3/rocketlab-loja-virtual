@@ -1,0 +1,113 @@
+{
+  "common": {
+    "loading": "Aguarde, pensando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "back": "Voltar",
+    "close": "Fechar"
+  },
+  "header": {
+    "home": "Início",
+    "products": "Produtos",
+    "cart": "Carrinho",
+    "orders": "Meus Pedidos",
+    "account": "Minha Conta",
+    "login": "Entrar",
+    "logout": "Sair",
+    "storeName": "Rocketlab Loja Virtual",
+    "toggleDarkMode": "Alternar modo escuro"
+  },
+  "home": {
+    "welcome": "Bem-vindo à nossa loja",
+    "featuredProducts": "Produtos em Destaque",
+    "viewAll": "Ver Todos",
+    "newArrivals": "Novidades",
+    "bestSellers": "Mais Vendidos"
+  },
+  "product": {
+    "addToCart": "Adicionar ao Carrinho",
+    "price": "Preço",
+    "quantity": "Quantidade",
+    "description": "Descrição",
+    "specifications": "Especificações",
+    "relatedProducts": "Produtos Relacionados",
+    "outOfStock": "Fora de Estoque",
+    "inStock": "Em Estoque",
+    "notFound": "Produto não encontrado.",
+    "backToProducts": "Voltar para produtos",
+    "addAgain": "Adicionar novamente ao carrinho",
+    "askAI": "Pergunte à IA sobre este produto",
+    "unitsInCart": "{{count, plural, one{unidade} other{unidades}}} no carrinho"
+  },
+  "cart": {
+    "title": "Seu Carrinho",
+    "items": "itens",
+    "empty": "Seu carrinho está vazio",
+    "subtotal": "Subtotal",
+    "shipping": "Frete",
+    "total": "Total",
+    "checkout": "Finalizar compra",
+    "continueShopping": "Continuar Comprando",
+    "remove": "Remover",
+    "update": "Atualizar",
+    "whyBuy": "POR QUE COMPRAR ESTES PRODUTOS?",
+    "whyBuyTitle": "Por que devo comprar estes produtos?",
+    "emptyCartMessage": "Adicione itens ao carrinho para usar esta função",
+    "whyBuyMessage": "Receba um motivo para comprar!"
+  },
+  "orders": {
+    "title": "Histórico de Pedidos",
+    "orderNumber": "Pedido",
+    "date": "Data",
+    "status": "Status",
+    "total": "Total",
+    "viewDetails": "Ver Detalhes",
+    "noOrders": "Nenhum pedido realizado ainda.",
+    "backToHome": "Voltar para a página principal"
+  },
+  "checkout": {
+    "title": "Confirmação de Compra",
+    "shippingAddress": "Endereço de Entrega",
+    "paymentMethod": "Forma de Pagamento",
+    "orderSummary": "Resumo do Pedido",
+    "placeOrder": "Confirmar compra",
+    "requiredFields": "Campos obrigatórios",
+    "success": "Compra realizada!",
+    "orderSaved": "Seu pedido foi salvo no histórico."
+  },
+  "account": {
+    "title": "Minha Conta",
+    "personalInfo": "Informações Pessoais",
+    "addresses": "Endereços",
+    "changePassword": "Alterar Senha",
+    "orderHistory": "Histórico de Pedidos"
+  },
+  "auth": {
+    "login": "Entrar",
+    "register": "Cadastrar",
+    "forgotPassword": "Esqueceu a senha?",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "name": "Nome",
+    "alreadyHaveAccount": "Já tem uma conta?"
+  },
+  "chat": {
+    "title": "Pergunte ao Assistente Rocketlab sobre",
+    "systemPrompt": "Você é um assistente de vendas. Responda perguntas sobre o seguinte produto",
+    "error": "Erro ao conectar com a IA.",
+    "thinking": "Pensando...",
+    "placeholder": "Digite sua pergunta...",
+    "send": "Enviar"
+  },
+  "footer": {
+    "storeName": "Rocketlab Loja Virtual",
+    "aboutUs": "Sobre nós",
+    "description": "A Rocketlab é uma loja virtual fictícia criada para demonstrar tecnologia, design e experiência de compra moderna. Nosso objetivo é inspirar e mostrar o potencial do e-commerce com uma interface bonita, intuitiva e responsiva.",
+    "copyright": "Rocketlab. Todos os direitos reservados."
+  }
+}

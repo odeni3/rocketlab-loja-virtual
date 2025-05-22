@@ -1,0 +1,52 @@
+{
+  "products": {
+    "1": {
+      "name": "Fone de Ouvido Bluetooth",
+      "description": "Fone de ouvido sem fio com cancelamento de ruído e bateria de longa duração."
+    },
+    "2": {
+      "name": "Smartwatch Fitness",
+      "description": "Acompanhe seus treinos, batimentos cardíacos e notificações do celular."
+    },
+    "3": {
+      "name": "Câmera Instantânea",
+      "description": "Capture momentos especiais e revele fotos instantaneamente."
+    },
+    "4": {
+      "name": "Teclado Mecânico RGB",
+      "description": "Teclado mecânico com iluminação RGB personalizável e switches de alta performance."
+    },
+    "5": {
+      "name": "Mouse Gamer",
+      "description": "Mouse ergonômico com alta precisão e botões programáveis."
+    },
+    "6": {
+      "name": "Notebook Ultrafino",
+      "description": "Notebook leve, rápido e com bateria de longa duração para produtividade em qualquer lugar."
+    },
+    "7": {
+      "name": "Cadeira Gamer",
+      "description": "Conforto e ergonomia para longas sessões de jogos ou trabalho."
+    },
+    "8": {
+      "name": "Monitor 4K 27\"",
+      "description": "Monitor de alta resolução para máxima qualidade de imagem."
+    },
+    "9": {
+      "name": "Impressora Multifuncional",
+      "description": "Imprima, copie e digitalize com facilidade e qualidade."
+    },
+    "10": {
+      "name": "Smart TV 50\"",
+      "description": "Smart TV com resolução 4K, acesso a apps e comando por voz."
+    },
+    "11": {
+      "name": "Echo Dot (Alexa)",
+      "description": "Assistente virtual inteligente para sua casa conectada."
+    },
+    "12": {
+      "name": "Tablet Android 10\"",
+      "description": "Tablet rápido, ideal para estudos, leitura e entretenimento."
+    }
+  }
+}

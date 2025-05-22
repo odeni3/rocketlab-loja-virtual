@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Product } from '../types/Product';
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useTranslatedProducts } from '../hooks/useTranslatedProducts';
 
 export interface CartItem {
   product: Product;
@@ -26,10 +28,32 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const { i18n } = useTranslation();
+  const translatedProducts = useTranslatedProducts();
   const [items, setItems] = useState<CartItem[]>(() => {
     const saved = localStorage.getItem('cart');
     return saved ? JSON.parse(saved) : [];
   });
+
+  // Atualiza os produtos do carrinho quando o idioma mudar
+  useEffect(() => {
+    setItems(prevItems => 
+      prevItems.map(item => {
+        const translatedProduct = translatedProducts.find(p => p.id === item.product.id);
+        if (translatedProduct) {
+          return {
+            ...item,
+            product: {
+              ...item.product,
+              name: translatedProduct.name,
+              description: translatedProduct.description
+            }
+          };
+        }
+        return item;
+      })
+    );
+  }, [i18n.language, translatedProducts]);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(items));

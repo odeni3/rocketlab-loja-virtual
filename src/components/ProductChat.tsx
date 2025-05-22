@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import type { Product } from '../types/Product';
+import { useTranslation } from 'react-i18next';
 
 interface ProductChatProps {
   product: Product;
@@ -8,10 +9,11 @@ interface ProductChatProps {
 }
 
 export default function ProductChat({ product, onClose }: ProductChatProps) {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState([
     {
       role: 'system',
-      content: `Você é um assistente de vendas. Responda perguntas sobre o seguinte produto: ${product.name} - ${product.description || ''} - Preço: R$ ${product.price}`,
+      content: `${t('chat.systemPrompt')}: ${product.name} - ${product.description || ''} - ${t('product.price')}: R$ ${product.price}`,
     },
   ]);
   const [input, setInput] = useState('');
@@ -26,13 +28,13 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/chat',
+        'http://localhost:5001/api/chat',
         { messages: newMessages }
       );
       const aiMessage = response.data.choices[0].message;
       setMessages([...newMessages, aiMessage]);
     } catch (err) {
-      setMessages([...newMessages, { role: 'assistant', content: 'Erro ao conectar com a IA.' }]);
+      setMessages([...newMessages, { role: 'assistant', content: t('chat.error') }]);
     }
     setLoading(false);
   }
@@ -41,7 +43,9 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
     <div className="fixed inset-0 bg-black/40 dark:bg-black/70 flex items-center justify-center z-50">
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl dark:shadow-black w-full max-w-md p-6 relative flex flex-col">
         <button className="absolute top-2 right-2 text-gray-500 dark:text-gray-300" onClick={onClose}>✕</button>
-        <h4 className="text-lg font-bold mb-2 text-blue-700 dark:text-blue-300">🤖Pergunte ao Assistente Rocketlab sobre: <span className="text-blue-700 dark:text-blue-200">{product.name}</span></h4>
+        <h4 className="text-lg font-bold mb-2 text-blue-700 dark:text-blue-300">
+          {t('chat.title')}: <span className="text-blue-700 dark:text-blue-200">{product.name}</span>
+        </h4>
         <div className="flex-1 overflow-y-auto mb-4 max-h-60 border rounded p-2 bg-gray-50 dark:bg-gray-800">
           {messages.slice(1).map((msg, i) => (
             <div key={i} className={`mb-2 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
@@ -50,7 +54,7 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
               </span>
             </div>
           ))}
-          {loading && <div className="text-gray-400 dark:text-gray-300">Pensando...</div>}
+          {loading && <div className="text-gray-400 dark:text-gray-300">{t('chat.thinking')}</div>}
         </div>
         <form
           className="flex gap-2"
@@ -63,7 +67,7 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
             className="flex-1 border rounded px-2 py-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-700"
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Digite sua pergunta..."
+            placeholder={t('chat.placeholder')}
             disabled={loading}
           />
           <button
@@ -71,7 +75,7 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
             type="submit"
             disabled={loading}
           >
-            Enviar
+            {t('chat.send')}
           </button>
         </form>
       </div>
