@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useState } from 'react';
 import Footer from '../components/Footer';
-
+import ProductChat from '../components/ProductChat';
+import type { Product } from '../types/Product';
 const Home = () => {
     const navigate = useNavigate();
     const { addToCart } = useCart();
     const [added, setAdded] = useState<{ [id: string]: boolean }>({});
+    const [chatProduct, setChatProduct] = useState< Product | null>(null);
     return (
       <>
         <Header />
@@ -19,12 +21,22 @@ const Home = () => {
               <div
                 key={product.id}
                 className="bg-white border border-gray-300 rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer 
-            hover:shadow-xl hover:-translate-y-1 transform transition-transform transition-shadow duration-300"
+            hover:shadow-xl hover:-translate-y-1 transform transition-transform transition-shadow duration-300 relative"
                 onClick={e => {
                   if ((e.target as HTMLElement).closest('button')) return;
                   navigate(`/produto/${product.id}`);
                 }}
               >
+                <button
+                  className="absolute top-3 right-3 bg-white/80 rounded-full p-2 shadow hover:bg-blue-100 transition z-10"
+                  onClick={e => {
+                    e.stopPropagation();
+                    setChatProduct(product);
+                  }}
+                  title="Pergunte à IA sobre este produto"
+                >
+                  💬
+                </button>
                 <div className="w-full h-48 flex items-center justify-center bg-white">
                   <img
                     src={product.image}
@@ -60,6 +72,9 @@ const Home = () => {
           </div>
         </main>
         <Footer />
+        {chatProduct && (
+          <ProductChat product={chatProduct} onClose={() => setChatProduct(null)} />
+        )}
       </>
     );
 };

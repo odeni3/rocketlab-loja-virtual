@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../contexts/CartContext';
 import CheckoutModal from './CheckoutModal';
+import axios from 'axios';
 
 interface SidebarCartProps {
   open: boolean;
@@ -10,6 +11,9 @@ interface SidebarCartProps {
 const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
   const { items, removeFromCart, updateQuantity, subtotal, totalItems } = useCart();
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [convinceOpen, setConvinceOpen] = useState(false);
+  const [convinceLoading, setConvinceLoading] = useState(false);
+  const [convinceText, setConvinceText] = useState('');
 
   const handleCheckout = () => {
     setCheckoutOpen(true);
@@ -20,11 +24,37 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
     onClose();
   };
 
+  const handleConvince = async () => {
+    setConvinceOpen(true);
+    setConvinceLoading(true);
+    setConvinceText('');
+    // Monta a lista de produtos do carrinho
+    const productList = items.map(({ product, quantity }) => `- ${product.name} (x${quantity})`).join('\n');
+    const prompt = `Você é um vendedor persuasivo. Convença o cliente a finalizar a compra dos seguintes itens do carrinho:\n${productList}`;
+    try {
+      const response = await axios.post('http://localhost:5000/api/chat', {
+        messages: [
+          { role: 'system', content: 'Você é um vendedor persuasivo.' },
+          { role: 'user', content: prompt }
+        ]
+      });
+      setConvinceText(response.data.choices[0].message.content);
+    } catch {
+      setConvinceText('Erro ao conectar com a IA.');
+    }
+    setConvinceLoading(false);
+  };
+
+  const handleCloseConvince = () => {
+    setConvinceOpen(false);
+    setConvinceText('');
+  };
+
   return (
     <>
       <div
         className={`fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}
-        style={{ maxWidth: 400 }}
+        style={{ maxWidth: 480 }}
       >
         <div className="flex items-center justify-between p-4 border-b">
           <div className="flex items-center gap-2">
@@ -33,6 +63,17 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
             </svg>
             <span className="font-bold text-lg">Seu Carrinho</span>
             <span className="ml-2 bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded">{totalItems} itens</span>
+            <button
+              className={`ml-2 text-[10px] font-semibold px-2 py-0.5 rounded-lg border shadow-sm transition-colors duration-200
+                ${items.length === 0 ? 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-blue-400 text-white hover:from-blue-700 hover:to-blue-500 border-blue-700 cursor-pointer'}`}
+              style={{ minWidth: 80 }}
+              onClick={items.length === 0 ? undefined : handleConvince}
+              type="button"
+              disabled={items.length === 0}
+              title={items.length === 0 ? 'Adicione itens ao carrinho para usar esta função' : 'Receba um motivo para comprar!'}
+            >
+              POR QUE COMPRAR ESTES PRODUTOS?
+            </button>
           </div>
           <button onClick={onClose} className="text-2xl font-bold text-gray-500 hover:text-gray-700">&times;</button>
         </div>
@@ -87,6 +128,27 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
         </div>
       </div>
       <CheckoutModal open={checkoutOpen} onClose={handleCloseCheckout} />
+      {convinceOpen && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative flex flex-col">
+            <button className="absolute top-2 right-2 text-gray-500" onClick={handleCloseConvince}>✕</button>
+            <h4 className="text-lg font-bold mb-4 text-blue-700">Por que devo comprar estes produtos?</h4>
+            <div className="flex-1 overflow-y-auto mb-4 max-h-60 border rounded p-2 bg-gray-50">
+              {convinceLoading ? (
+                <div className="text-gray-400">Aguarde, pensando...</div>
+              ) : (
+                <span className="text-gray-800 whitespace-pre-line">{convinceText}</span>
+              )}
+            </div>
+            <button
+              className="bg-blue-700 text-white px-4 py-2 rounded mt-2 self-end"
+              onClick={handleCloseConvince}
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
