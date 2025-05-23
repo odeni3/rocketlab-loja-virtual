@@ -1,76 +1,163 @@
 # 🚀 Rocketlab Loja Virtual
 
-Bem-vindo à Rocketlab Loja Virtual! Aqui você encontra uma experiência de e-commerce moderna, inteligente e cheia de recursos interativos. Navegue, converse com a IA sobre produtos, ative o dark mode e aproveite uma interface pensada para encantar.
+Bem-vindo à Rocketlab Loja Virtual! Uma experiência de e-commerce moderna, inteligente e cheia de recursos interativos. Navegue, converse com a IA sobre produtos, ative o dark mode e aproveite uma interface pensada para encantar.
 
-## ✨ Principais Funcionalidades
+## ✨ Funcionalidades Detalhadas
 
-- **🌗 Dark Mode com um clique:**
-  - Ative ou desative o modo escuro em toda a loja com um botão no topo. O visual se adapta automaticamente para proporcionar conforto visual em qualquer ambiente!
+### 🛍️ Catálogo de Produtos
 
-- **🛒 Carrinho global com sidebar inteligente:**
-  - Veja, altere quantidades, remova itens e finalize sua compra de forma rápida. O carrinho aparece como uma sidebar moderna e responsiva.
-  - **Botão "POR QUE COMPRAR ESTES PRODUTOS?"**: Peça para a IA te convencer a finalizar a compra dos itens do carrinho, com argumentos personalizados e persuasivos!
+- **Listagem Dinâmica:**
 
-- **💬 Chat com IA em cada produto:**
-  - Cada card de produto tem um botão de chat. Abra um mini-chat com inteligência artificial (ChatGPT) e tire dúvidas, peça recomendações ou converse sobre o item em tempo real.
+  - Visualização em grid responsivo de produtos
+  - Paginação automática com 9 itens por página
+  - Filtros inteligentes para encontrar produtos específicos
+  - Animações suaves ao interagir com os cards
 
-- **🖼️ Visualização de produtos:**
-  - Cards com imagem, nome, preço, desconto e botão de adicionar ao carrinho.
-  - Página de detalhes com descrição, preço antigo, desconto, seleção de quantidade e botão de adicionar ao carrinho.
+- **Cards de Produtos:**
+  - Imagem do produto com zoom suave
+  - Nome e descrição do produto
+  - Preço atual e preço antigo (quando aplicável)
+  - Badge de desconto com porcentagem
+  - Botão de adicionar ao carrinho com feedback visual
+  - Botão de chat com IA para cada produto
 
-- **📦 Histórico de pedidos:**
-  - Veja todos os pedidos realizados, com data, produtos, quantidades e total de cada compra.
+### 🛒 Sistema de Carrinho
 
-- **🔄 Navegação fluida:**
-  - Use o menu para acessar pedidos, voltar para a loja ou navegar entre páginas sem recarregar.
+- **Carrinho Global:**
 
-- **💡 Visual moderno e responsivo:**
-  - Layout adaptado para qualquer tela, com animações, feedback visual e dark mode de verdade!
+  - Sidebar deslizante com lista de produtos
+  - Controle de quantidade para cada item
+  - Remoção individual de produtos
+  - Cálculo automático de subtotal e total
+  - Persistência dos dados no localStorage
+  - Atualização em tempo real do contador de itens
+
+- **Recursos Especiais do Carrinho:**
+  - Botão "Por que comprar?" que gera argumentos persuasivos via IA
+  - Feedback visual ao adicionar/remover itens
+  - Animações suaves nas interações
+  - Suporte a múltiplos idiomas nos produtos
+
+### 💬 Chat com IA
+
+- **Chat por Produto:**
+  - Mini-chat integrado em cada card de produto
+  - Interface intuitiva e responsiva
+  - Respostas personalizadas sobre o produto
+  - Suporte a perguntas técnicas e recomendações
+  - Integração com ChatGPT para respostas inteligentes
+
+### 🌓 Sistema de Tema
+
+- **Dark Mode:**
+  - Alternância instantânea entre temas claro e escuro
+  - Persistência da preferência do usuário
+  - Transições suaves entre os temas
+  - Cores otimizadas para cada modo
+  - Adaptação automática de todos os componentes
+
+### 📦 Gestão de Pedidos
+
+- **Histórico de Compras:**
+  - Lista completa de pedidos realizados
+  - Detalhes de cada pedido (data, produtos, quantidades)
+  - Cálculo de totais por pedido
+  - Persistência dos dados no localStorage
+  - Interface intuitiva para visualização
+
+### 🌐 Internacionalização
+
+- **Suporte a Múltiplos Idiomas:**
+  - Interface disponível em português e inglês
+  - Tradução automática de produtos
+  - Persistência da preferência de idioma
+  - Tradução dinâmica de todos os textos
 
 ## 🛠️ Tecnologias Utilizadas
 
 - [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - [React Router DOM](https://reactrouter.com/) para navegação
-- [TailwindCSS](https://tailwindcss.com/) para estilização moderna e dark mode
+- [TailwindCSS](https://tailwindcss.com/) para estilização moderna
 - [Vite](https://vitejs.dev/) para build rápido
 - [OpenAI API (ChatGPT)](https://platform.openai.com/) para chat inteligente
+- [i18next](https://www.i18next.com/) para internacionalização
+- [React Context API](https://react.dev/learn/passing-data-deeply-with-context) para gerenciamento de estado
 
 ## 🚦 Como rodar o projeto
 
 1. **Clone o repositório:**
+
    ```bash
    git clone https://github.com/odeni3/rocketlab-loja-virtual.git
    cd rocketlab-loja-virtual
    ```
-2. **Instale as dependências:**
+
+2. **Instale as dependências do frontend:**
+
    ```bash
    npm install
    ```
-3. **Rode o projeto em modo desenvolvimento:**
+
+3. **Configure as variáveis de ambiente do frontend:**
+
+   - Crie um arquivo `.env` na pasta gpt_api
+   - Adicione sua chave da API OpenAI:
+     ```
+     VITE_OPENAI_API_KEY=sua_chave_aqui
+     ```
+
+4. **Configure e rode o backend da API de IA:**
+
    ```bash
+   cd gpt_api
+   npm install
    npm run dev
    ```
-4. **Acesse no navegador:**
+
+   O servidor da API rodará em http://localhost:5001
+
+5. **Em um novo terminal, rode o frontend:**
+
+   ```bash
+   cd ..  # Volte para a raiz do projeto
+   npm run dev
+   ```
+
+6. **Acesse no navegador:**
    [http://localhost:5173](http://localhost:5173)
 
-## 🗂️ Estrutura do Projeto
+## 🗂️ Estrutura do Projeto (front)
 
-- **src/pages/Home.tsx**: Página inicial com listagem de produtos, botão de chat IA em cada card.
-- **src/pages/ProductDetail.tsx**: Detalhes do produto, seleção de quantidade, botão estilizado para voltar.
-- **src/components/Header.tsx**: Topo fixo com nome da loja, botão de dark mode, carrinho e link para pedidos.
-- **src/components/SidebarCart.tsx**: Sidebar do carrinho, botão de persuasão com IA, controles de quantidade e remoção.
-- **src/pages/Orders.tsx**: Histórico de pedidos, botão estilizado para voltar à loja.
-- **src/components/ProductChat.tsx**: Mini-chat com IA para cada produto.
-- **src/components/Footer.tsx**: Rodapé responsivo.
-- **src/contexts/CartContext.tsx**: Contexto global do carrinho.
-- **src/mocks/productsmock.ts**: Mock de produtos.
+```
+src/
+├── components/          # Componentes reutilizáveis
+├── contexts/           # Contextos React
+├── hooks/             # Hooks personalizados
+├── pages/             # Páginas da aplicação
+├── types/             # Definições de tipos TypeScript
+├── locales/           # Arquivos de tradução
+├── mocks/             # Dados mockados
+```
 
-## 💬 Experimente!
-- Ative o dark mode e veja toda a loja se transformar.
-- Clique no balão de chat em qualquer produto e converse com a IA.
-- Adicione produtos ao carrinho e peça para a IA te convencer a comprar.
-- Finalize pedidos e acompanhe seu histórico.
+## 💡 Dicas de Uso
+
+1. **Explorando Produtos:**
+
+   - Use os filtros para encontrar produtos específicos
+   - Clique no ícone de chat para conversar com a IA sobre o produto
+   - Experimente o dark mode para uma experiência visual diferente
+
+2. **Gerenciando o Carrinho:**
+
+   - Adicione produtos e ajuste as quantidades
+   - Use o botão "Por que comprar?" para receber argumentos persuasivos
+   - Finalize pedidos e acompanhe seu histórico
+
+3. **Interagindo com a IA:**
+   - Faça perguntas específicas sobre produtos
+   - Peça recomendações baseadas em seus interesses
+   - Solicite informações técnicas detalhadas
 
 ---
 
-Rocketlab Loja Virtual — feita para inspirar, encantar e mostrar o futuro do e-commerce! 🚀
+Rocketlab Loja Virtual — Uma experiência de e-commerce moderna, inteligente e encantadora! 🚀
