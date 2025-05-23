@@ -109,5 +109,24 @@
     "aboutUs": "Sobre nós",
     "description": "A Rocketlab é uma loja virtual fictícia criada para demonstrar tecnologia, design e experiência de compra moderna. Nosso objetivo é inspirar e mostrar o potencial do e-commerce com uma interface bonita, intuitiva e responsiva.",
     "copyright": "Rocketlab. Todos os direitos reservados."
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Próximo"
+  },
+  "filters": {
+    "title": "Filtros",
+    "searchName": "Pesquisar produto",
+    "searchNamePlaceholder": "Digite o nome do produto...",
+    "minPrice": "Preço Mínimo",
+    "maxPrice": "Preço Máximo",
+    "onlyDiscounted": "Apenas com Desconto",
+    "sortBy": "Ordenar por",
+    "sortOrder": "Ordem",
+    "sortByPrice": "Preço",
+    "sortByName": "Nome",
+    "sortByDiscount": "Desconto",
+    "ascending": "Crescente",
+    "descending": "Decrescente"
   }
 }
