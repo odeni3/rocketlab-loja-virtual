@@ -46,11 +46,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   const addToCart = (product: Product, quantity: number = 1) => {
     setItems((prev) => {
-      const idx = prev.findIndex((item) => item.product.id === product.id);
-      if (idx > -1) {
-        const updated = [...prev];
-        updated[idx].quantity += quantity;
-        return updated;
+      const existingItem = prev.find((item) => item.product.id === product.id);
+      if (existingItem) {
+        return prev.map((item) =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
       }
       return [...prev, { product, quantity }];
     });
