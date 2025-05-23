@@ -21,7 +21,7 @@ const Home = () => {
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [currentPage, setCurrentPage] = useState(1);
 
-    // Resetar página quando os produtos filtrados mudarem
+    // resetar página quando os produtos filtrados mudarem
     useEffect(() => {
         setCurrentPage(1);
     }, [filteredProducts]);
