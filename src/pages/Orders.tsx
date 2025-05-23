@@ -2,21 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTranslatedProducts } from '../hooks/useTranslatedProducts';
-
-interface Order {
-  id: number;
-  items: {
-    product: {
-      id: string;
-      name: string;
-      price: number;
-      image: string;
-    };
-    quantity: number;
-  }[];
-  subtotal: number;
-  date: string;
-}
+import type { Order } from '../types/Order';
 
 const Orders: React.FC = () => {
   const { t } = useTranslation();

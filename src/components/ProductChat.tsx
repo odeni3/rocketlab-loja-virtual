@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios';
-import type { Product } from '../types/Product';
+import type { ProductChatProps, ChatMessage, ChatResponse } from '../types/Chat';
 import { useTranslation } from 'react-i18next';
-
-interface ProductChatProps {
-  product: Product;
-  onClose: () => void;
-}
 
 export default function ProductChat({ product, onClose }: ProductChatProps) {
   const { t } = useTranslation();
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      role: 'system',
+      role: 'system' as const,
       content: `${t('chat.systemPrompt')}: ${product.name} - ${product.description || ''} - ${t('product.price')}: R$ ${product.price}`,
     },
   ]);
@@ -21,20 +16,21 @@ export default function ProductChat({ product, onClose }: ProductChatProps) {
 
   async function sendMessage() {
     if (!input.trim()) return;
-    const newMessages = [...messages, { role: 'user', content: input }];
+    const newMessages: ChatMessage[] = [...messages, { role: 'user' as const, content: input }];
     setMessages(newMessages);
     setInput('');
     setLoading(true);
 
     try {
-      const response = await axios.post(
+      const response = await axios.post<ChatResponse>(
         'http://localhost:5001/api/chat',
         { messages: newMessages }
       );
       const aiMessage = response.data.choices[0].message;
       setMessages([...newMessages, aiMessage]);
-    } catch (err) {
-      setMessages([...newMessages, { role: 'assistant', content: t('chat.error') }]);
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error);
+      setMessages([...newMessages, { role: 'assistant' as const, content: t('chat.error') }]);
     }
     setLoading(false);
   }

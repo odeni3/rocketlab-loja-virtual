@@ -41,7 +41,9 @@
     "backToProducts": "Voltar para produtos",
     "addAgain": "Adicionar novamente ao carrinho",
     "askAI": "Pergunte à IA sobre este produto",
-    "unitsInCart": "{{count, plural, one{unidade} other{unidades}}} no carrinho"
+    "unitsInCart": "{{count}} {{text}}",
+    "singleItem": "item enviado ao carrinho",
+    "multipleItems": "itens enviados ao carrinho"
   },
   "cart": {
     "title": "Seu Carrinho",

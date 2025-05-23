@@ -1,23 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Product } from '../types/Product';
-import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTranslatedProducts } from '../hooks/useTranslatedProducts';
-
-export interface CartItem {
-  product: Product;
-  quantity: number;
-}
-
-interface CartContextProps {
-  items: CartItem[];
-  addToCart: (product: Product, quantity?: number) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  clearCart: () => void;
-  totalItems: number;
-  subtotal: number;
-}
+import type { CartItem, CartContextProps, CartProviderProps } from '../types/CartContext';
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
@@ -27,7 +12,7 @@ export const useCart = () => {
   return ctx;
 };
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
+export const CartProvider = ({ children }: CartProviderProps) => {
   const { i18n } = useTranslation();
   const translatedProducts = useTranslatedProducts();
   const [items, setItems] = useState<CartItem[]>(() => {

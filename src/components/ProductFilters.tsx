@@ -1,20 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { Product } from '../types/Product';
 import { useTranslation } from 'react-i18next';
-
-interface FilterState {
-  searchName: string;
-  minPrice: string;
-  maxPrice: string;
-  onlyDiscounted: boolean;
-  sortBy: 'price' | 'name' | 'discount';
-  sortOrder: 'asc' | 'desc';
-}
-
-interface ProductFiltersProps {
-  products: Product[];
-  onFilterChange: (filteredProducts: Product[]) => void;
-}
+import type { FilterState, ProductFiltersProps } from '../types/Filter';
 
 const ProductFilters = ({ products, onFilterChange }: ProductFiltersProps) => {
   const { t } = useTranslation();

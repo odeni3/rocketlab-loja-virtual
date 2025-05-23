@@ -73,7 +73,10 @@ const ProductDetail = () => {
             </button>
             {inCart > 0 && (
               <div className="text-green-600 text-sm font-medium mt-2">
-                {inCart} {t('product.unitsInCart', { count: inCart })}
+                {t('product.unitsInCart', { 
+                  count: inCart,
+                  text: inCart === 1 ? t('product.singleItem') : t('product.multipleItems')
+                })}
               </div>
             )}
           </div>

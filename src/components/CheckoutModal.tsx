@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
-
-interface CheckoutModalProps {
-  open: boolean;
-  onClose: () => void;
-}
+import type { CheckoutModalProps, Order } from '../types/Checkout';
 
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ open, onClose }) => {
   const { t } = useTranslation();
@@ -16,8 +12,8 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ open, onClose }) => {
 
   const handleConfirm = () => {
     // Salvar pedido no localStorage
-    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-    const newOrder = {
+    const orders = JSON.parse(localStorage.getItem('orders') || '[]') as Order[];
+    const newOrder: Order = {
       id: Date.now(),
       items,
       subtotal,

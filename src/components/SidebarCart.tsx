@@ -3,14 +3,10 @@ import { useCart } from '../contexts/CartContext';
 import CheckoutModal from './CheckoutModal';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
-
-interface SidebarCartProps {
-  open: boolean;
-  onClose: () => void;
-}
+import type { SidebarCartProps, ConvinceResponse } from '../types/Cart';
 
 const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { items, removeFromCart, updateQuantity, subtotal, totalItems } = useCart();
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [convinceOpen, setConvinceOpen] = useState(false);
@@ -32,17 +28,21 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
     setConvinceText('');
     // Monta a lista de produtos do carrinho
     const productList = items.map(({ product, quantity }) => `- ${product.name} (x${quantity})`).join('\n');
-    const prompt = `Você é um vendedor persuasivo. Convença o cliente a finalizar a compra dos seguintes itens do carrinho:\n${productList}`;
+    const isEnglish = i18n.language === 'en';
+    const prompt = isEnglish 
+      ? `You are a persuasive salesperson. Convince the customer to complete the purchase of the following cart items:\n${productList}`
+      : `Você é um vendedor persuasivo. Convença o cliente a finalizar a compra dos seguintes itens do carrinho:\n${productList}`;
+    
     try {
-      const response = await axios.post('http://localhost:5001/api/chat', {
+      const response = await axios.post<ConvinceResponse>('http://localhost:5001/api/chat', {
         messages: [
-          { role: 'system', content: 'Você é um vendedor persuasivo.' },
+          { role: 'system', content: isEnglish ? 'You are a persuasive salesperson.' : 'Você é um vendedor persuasivo.' },
           { role: 'user', content: prompt }
         ]
       });
       setConvinceText(response.data.choices[0].message.content);
     } catch {
-      setConvinceText('Erro ao conectar com a IA.');
+      setConvinceText(t('chat.error'));
     }
     setConvinceLoading(false);
   };
@@ -64,7 +64,9 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007.5 17h9a1 1 0 00.9-.55L21 7M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
             </svg>
             <span className="font-bold text-lg text-gray-900 dark:text-gray-100">{t('cart.title')}</span>
-            <span className="ml-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 text-xs font-semibold px-2 py-0.5 rounded">{totalItems} {t('cart.items')}</span>
+            <span className="ml-2 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 text-xs font-semibold px-2 py-0.5 rounded">
+              {totalItems} {t('cart.items', { count: totalItems })}
+            </span>
             <button
               className={`ml-2 text-[10px] font-semibold px-2 py-0.5 rounded-lg border shadow-sm transition-colors duration-200
                 ${items.length === 0 ? 'bg-gray-200 dark:bg-gray-800 text-gray-400 dark:text-gray-500 border-gray-300 dark:border-gray-700 cursor-not-allowed' : 'bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-800 dark:to-blue-600 text-white hover:from-blue-700 hover:to-blue-500 dark:hover:from-blue-900 dark:hover:to-blue-700 border-blue-700 dark:border-blue-300 cursor-pointer'}`}

@@ -41,7 +41,9 @@
     "backToProducts": "Back to products",
     "addAgain": "Add to cart again",
     "askAI": "Ask AI about this product",
-    "unitsInCart": "{{count, plural, one{unit} other{units}}} in cart"
+    "unitsInCart": "{{count}} {{text}}",
+    "singleItem": "item sent to cart",
+    "multipleItems": "items sent to cart"
   },
   "cart": {
     "title": "Your Cart",
