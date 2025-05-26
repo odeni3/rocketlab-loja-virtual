@@ -103,7 +103,7 @@ Bem-vindo à Rocketlab Loja Virtual! Uma experiência de e-commerce moderna, int
    - Crie um arquivo `.env` na pasta gpt_api
    - Adicione sua chave da API OpenAI:
      ```
-     VITE_OPENAI_API_KEY=sua_chave_aqui
+     OPENAI_API_KEY=sua_chave_aqui (exatamente assim)
      ```
 
 4. **Configure e rode o backend da API de IA:**
