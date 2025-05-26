@@ -43,7 +43,12 @@
     "askAI": "Ask AI about this product",
     "unitsInCart": "{{count}} {{text}}",
     "singleItem": "item sent to cart",
-    "multipleItems": "items sent to cart"
+    "multipleItems": "items sent to cart",
+    "reviews": "reviews",
+    "freeShipping": "Free Shipping",
+    "deliveryTime": "Delivery in 2-3 business days",
+    "warranty": "12 months warranty",
+    "returnPolicy": "30 days return policy"
   },
   "cart": {
     "title": "Your Cart",
@@ -130,5 +135,14 @@
     "sortByDiscount": "Discount",
     "ascending": "Ascending",
     "descending": "Descending"
+  },
+  "shipping": {
+    "calculate": "Calculate Shipping",
+    "cepPlaceholder": "Enter your ZIP code (national only)",
+    "freeShipping": "Free Shipping",
+    "shippingCost": "Shipping: ${{cost}}",
+    "deliveryTime": "Delivery time: {{time}} business days",
+    "error": "Error calculating shipping. Please try again.",
+    "deliveryAvailable": "Delivery available for ZIP code. (City: {{city}})"
   }
 }

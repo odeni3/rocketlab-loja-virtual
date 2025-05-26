@@ -9,10 +9,13 @@ const Header: React.FC = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const { totalItems } = useCart();
   const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark';
+    // Verifica se existe um tema salvo no localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme === 'dark';
     }
-    return false;
+    // Se não houver tema salvo, verifica a preferência do sistema
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   const currentLanguage = i18n.language;
@@ -33,6 +36,20 @@ const Header: React.FC = () => {
       localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
+
+  // Adiciona listener para mudanças no tema do sistema
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Só muda o tema se não houver um tema salvo no localStorage
+      if (!localStorage.getItem('theme')) {
+        setDarkMode(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   return (
     <>

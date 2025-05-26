@@ -43,7 +43,12 @@
     "askAI": "Pergunte à IA sobre este produto",
     "unitsInCart": "{{count}} {{text}}",
     "singleItem": "item enviado ao carrinho",
-    "multipleItems": "itens enviados ao carrinho"
+    "multipleItems": "itens enviados ao carrinho",
+    "reviews": "avaliações",
+    "freeShipping": "Frete Grátis",
+    "deliveryTime": "Entrega em 2-3 dias úteis",
+    "warranty": "Garantia de 12 meses",
+    "returnPolicy": "Devolução em até 30 dias"
   },
   "cart": {
     "title": "Seu Carrinho",
@@ -130,5 +135,14 @@
     "sortByDiscount": "Desconto",
     "ascending": "Crescente",
     "descending": "Decrescente"
+  },
+  "shipping": {
+    "calculate": "Calcular Frete",
+    "cepPlaceholder": "Digite seu CEP (apenas nacional)",
+    "freeShipping": "Frete Grátis",
+    "shippingCost": "Frete: R$ {{cost}}",
+    "deliveryTime": "Prazo de entrega: {{time}} dias úteis",
+    "error": "Erro ao calcular o frete. Tente novamente.",
+    "deliveryAvailable": "Entrega disponível para o CEP. (Cidade: {{city}})"
   }
 }
