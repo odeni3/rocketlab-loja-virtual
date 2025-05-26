@@ -184,7 +184,7 @@ const ProductDetail = () => {
 
       {/* Produtos relacionados */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-white">{t('product.relatedProducts')}</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black dark:text-white">{t('product.relatedProducts')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {relatedProducts.map((relatedProduct) => (
             <div
