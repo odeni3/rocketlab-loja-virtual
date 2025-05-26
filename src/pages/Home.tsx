@@ -64,7 +64,7 @@ const Home = () => {
                     }}
                   >
                     <button
-                      className="absolute top-3 right-3 bg-white dark:bg-gray-700/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-gray-600 transition z-10"
+                      className="absolute top-3 right-3 bg-gray-500/80 dark:bg-gray-800/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-gray-600 transition z-10"
                       onClick={e => {
                         e.stopPropagation();
                         setChatProduct(product);
@@ -86,7 +86,7 @@ const Home = () => {
                         <span className="text-xl font-bold text-blue-700 dark:text-blue-300 mr-2">R$ {product.price.toFixed(2)}</span>
                         {product.oldPrice && (
                           <span className="text-gray-400 dark:text-gray-500 line-through mr-2">R$ {product.oldPrice.toFixed(2)}</span>
-                        )}
+                        )}<br></br>
                         {product.discount && (
                           <span className="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-200 text-xs font-semibold px-2 py-1 rounded">-{product.discount}%</span>
                         )}
