@@ -1,6 +1,6 @@
 # 🚀 Rocketlab Loja Virtual
 
-Bem-vindo à Rocketlab Loja Virtual! Uma experiência de e-commerce moderna, inteligente e cheia de recursos interativos. Navegue, converse com a IA sobre produtos, ative o dark mode e aproveite uma interface pensada para encantar.
+Bem-vindo à Rocketlab Loja Virtual! Uma experiência de e-commerce moderna, inteligente e cheia de recursos interativos. Navegue, converse com a IA sobre produtos, mude a linguagem, ative o dark mode, verifique disponibilidade de entrega por CEP e aproveite uma interface pensada para encantar.
 
 ## ✨ Funcionalidades Detalhadas
 
@@ -20,6 +20,14 @@ Bem-vindo à Rocketlab Loja Virtual! Uma experiência de e-commerce moderna, int
   - Badge de desconto com porcentagem
   - Botão de adicionar ao carrinho com feedback visual
   - Botão de chat com IA para cada produto
+
+### 🚚 Cálculo de Frete
+
+- **Verificação de Entrega:**
+  - Cálculo de disponibilidade por CEP
+  - Identificação automática da cidade de entrega
+  - Suporte apenas para entregas nacionais
+  - Feedback imediato sobre disponibilidade
 
 ### 🛒 Sistema de Carrinho
 
@@ -103,7 +111,7 @@ Bem-vindo à Rocketlab Loja Virtual! Uma experiência de e-commerce moderna, int
    - Crie um arquivo `.env` na pasta gpt_api
    - Adicione sua chave da API OpenAI:
      ```
-     OPENAI_API_KEY=sua_chave_aqui (exatamente assim)
+     OPENAI_API_KEY="sua_chave_aqui" (exatamente assim)
      ```
 
 4. **Configure e rode o backend da API de IA:**
