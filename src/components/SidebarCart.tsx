@@ -69,7 +69,7 @@ const SidebarCart: React.FC<SidebarCartProps> = ({ open, onClose }) => {
             </span>
             <button
               className={`ml-2 text-[10px] font-semibold px-2 py-0.5 rounded-lg border shadow-sm transition-colors duration-200
-                ${items.length === 0 ? 'bg-gray-200 dark:bg-gray-800 text-gray-400 dark:text-gray-500 border-gray-300 dark:border-gray-700 cursor-not-allowed' : 'bg-gradient-to-r from-green-600 to-green-400 dark:from-green-800 dark:to-green-600 text-white hover:from-green-700 hover:to-green-500 dark:hover:from-green-900 dark:hover:to-green-700 border-green-700 dark:border-green-300 cursor-pointer'}`}
+                ${items.length === 0 ? 'bg-gray-200 dark:bg-gray-800 text-gray-400 dark:text-gray-500 border-gray-300 dark:border-gray-700 cursor-not-allowed' : 'bg-gradient-to-r from-green-600 to-green-500 dark:from-green-800 dark:to-green-600 text-white hover:from-green-800 hover:to-green-600 dark:hover:from-green-900 dark:hover:to-green-800 border-green-900 dark:border-green-300 cursor-pointer'}`}
               style={{ minWidth: 80 }}
               onClick={items.length === 0 ? undefined : handleConvince}
               type="button"

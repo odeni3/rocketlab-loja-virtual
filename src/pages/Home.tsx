@@ -64,7 +64,7 @@ const Home = () => {
                     }}
                   >
                     <button
-                      className="absolute top-3 right-3 bg-gray-500/80 dark:bg-gray-800/80 rounded-full p-2 shadow hover:bg-blue-100 dark:hover:bg-gray-600 transition z-10"
+                      className="absolute top-3 right-3 bg-gray-500/80 dark:bg-gray-800/80 rounded-full p-2 shadow hover:bg-gray-300 dark:hover:bg-gray-400 transition z-10"
                       onClick={e => {
                         e.stopPropagation();
                         setChatProduct(product);
