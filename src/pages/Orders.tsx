@@ -9,6 +9,17 @@ const Orders: React.FC = () => {
   const translatedProducts = useTranslatedProducts();
   const [orders, setOrders] = useState<Order[]>([]);
 
+  // Aplica o tema salvo no localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const root = window.document.documentElement;
+    if (savedTheme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, []);
+
   useEffect(() => {
     const saved = localStorage.getItem('orders');
     if (saved) {
