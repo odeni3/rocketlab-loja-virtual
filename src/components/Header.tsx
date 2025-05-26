@@ -53,7 +53,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="backdrop-blur-md bg-gradient-to-r from-blue-900/90 via-blue-800/80 to-blue-600/80 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 shadow-2xl border-b border-blue-900/30 dark:border-gray-800 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
+      <header className="backdrop-blur-md bg-gradient-to-r from-blue-900/100 via-blue-800/85 to-blue-700/85 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 shadow-2xl border-b border-blue-900/30 dark:border-gray-800 px-8 py-4 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 shadow-lg">
             🚀
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-6">
           <Link
             to="/pedidos"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 text-white dark:text-gray-100 font-semibold shadow transition-all duration-200"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/15 hover:bg-white/30 dark:bg-gray-700/60 dark:hover:bg-gray-600/80 text-white dark:text-gray-100 font-semibold shadow transition-all duration-200"
           >
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" />
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
           </Link>
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 text-white dark:text-gray-100 font-semibold shadow transition-all duration-200"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/15 hover:bg-white/30 dark:bg-gray-700/60 dark:hover:bg-gray-600/80 text-white dark:text-gray-100 font-semibold shadow transition-all duration-200"
             title={currentLanguage === 'pt' ? 'Switch to English' : 'Mudar para Português'}
           >
             {currentLanguage === 'pt' ? (
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
           </button>
           <button
             className={`relative w-14 h-8 flex items-center rounded-full transition-colors duration-300 focus:outline-none
-              ${darkMode ? 'bg-gray-800' : 'bg-gray-300'}`}
+              ${darkMode ? 'bg-gray-700' : 'bg-gray-300'}`}
             onClick={() => setDarkMode((prev) => !prev)}
             aria-label={t('header.toggleDarkMode')}
             type="button"
@@ -113,7 +113,7 @@ const Header: React.FC = () => {
             </span>
           </button>
           <button
-            className="relative bg-white/10 hover:bg-blue-700 dark:bg-gray-800/60 dark:hover:bg-gray-800/80 border-none cursor-pointer p-3 rounded-full flex items-center transition-all duration-200 shadow-lg"
+            className="relative bg-white/15 hover:bg-white/30 dark:bg-gray-700/60 dark:hover:bg-gray-600/80 border-none cursor-pointer p-3 rounded-full flex items-center transition-all duration-200 shadow-lg"
             aria-label={t('header.cart')}
             onClick={() => setCartOpen(true)}
           >
